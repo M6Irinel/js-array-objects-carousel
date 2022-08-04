@@ -1,0 +1,31 @@
+
+#buttons_down_select_img {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+#buttons_down_select_img .selector_img {
+    flex-basis: calc(100% / 5);
+    filter:brightness(0.4);
+}
+
+#buttons_down_select_img .selector_img:hover {
+    filter:brightness(1);
+}
+
+#buttons_down_select_img .selector_img.active_img {
+    filter:brightness(1);
+    border: 5px solid #bac3d0;
+}
+
+.img_cover {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}

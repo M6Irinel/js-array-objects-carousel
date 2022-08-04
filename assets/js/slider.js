@@ -59,11 +59,11 @@ let index_img = 0;
 // creazione di un set interval per il passaggio automatico con un il range di 5s
 let intervallo;
 
-function setInterval_My_Script() {
-	intervallo = setInterval(avvanzamentoDelleImg, 3000);
-}
+// function setInterval_My_Script() {
+// 	intervallo = setInterval(avvanzamentoDelleImg, 3000);
+// }
 
-setInterval_My_Script();
+// setInterval_My_Script();
 
 // un for per la creazione del layout
 for (let i = 0; i < slides.length; i++) {
@@ -145,10 +145,10 @@ for (let i = 0; i < slides.length; i++) {
 // al click del pulsante precedente
 DOM_BUTTON_PREV.addEventListener('click', ()=>{
     
-    // puliamo intervallo
-    clearInterval(intervallo);
-    // e lo riassegnamo
-    setInterval_My_Script();
+    // // puliamo intervallo
+    // clearInterval(intervallo);
+    // // e lo riassegnamo
+    // setInterval_My_Script();
 
     // se index_img e maggiore del valore 0
     if(index_img > 0){
@@ -187,10 +187,10 @@ DOM_BUTTON_NEXT.addEventListener('click', ()=>{
 // creata una funzione esterna per poter riprenderla anche con setInterval
 function avvanzamentoDelleImg() {
     
-    // puliamo intervallo
-    clearInterval(intervallo);
-    // e lo riassegnamo
-    setInterval_My_Script();
+    // // puliamo intervallo
+    // clearInterval(intervallo);
+    // // e lo riassegnamo
+    // setInterval_My_Script();
 
     // se index_img e minore del valore della lunghezza del array - 1
     if(index_img < DOM_LI_ELEMENTS_CREATED.length - 1){
