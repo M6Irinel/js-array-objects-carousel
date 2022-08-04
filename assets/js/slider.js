@@ -41,6 +41,7 @@ const slides = [
 
 // salviamo tutti gli elementi dentro alle variabili costanti
 const DOM = document.querySelector.bind(document);
+
 const DOM_UL_FATHER = DOM('.slides-wrapper');
 const DOM_BUTTON_PREV = DOM('.arrow-prev');
 const DOM_BUTTON_NEXT = DOM('.arrow-next');

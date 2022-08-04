@@ -41,6 +41,7 @@ const slides = [
 
 // salviamo tutti gli elementi dentro alle variabili costanti
 const DOM = document.querySelector.bind(document);
+
 const DOM_UL_FATHER = DOM('.slides-wrapper');
 const DOM_BUTTON_PREV = DOM('.arrow-prev');
 const DOM_BUTTON_NEXT = DOM('.arrow-next');
@@ -61,17 +62,24 @@ let index_img = 0;
 // creazione di un set interval per il passaggio automatico con un il range di 5s
 let intervallo;
 
+// funzione per l'intervallo di autoPLay
 function setInterval_My_Script() {
+    // alla variabile intervallo asseganmo il setInterval che chiama la funzione avvanzamentoDelleImg
     intervallo = setInterval(avvanzamentoDelleImg, 3000);
 }
 
+// chiamiamo la funzione
 setInterval_My_Script();
 
+// al entrata del mouse
 DOM_carousel_slider.addEventListener('mouseenter', () => {
+    // pulisci l'intervallo del autoPlay
     clearInterval(intervallo);
 });
 
+// al abbandono del mouse
 DOM_carousel_slider.addEventListener('mouseleave', () => {
+    // chiamiamo la funzione
     setInterval_My_Script();
 });
 

@@ -41,6 +41,7 @@ const slides = [
 
 // salviamo tutti gli elementi dentro alle variabili costanti
 const DOM = document.querySelector.bind(document);
+
 const DOM_UL_FATHER = DOM('.slides-wrapper');
 const DOM_BUTTON_PREV = DOM('.arrow-prev');
 const DOM_BUTTON_NEXT = DOM('.arrow-next');
@@ -62,36 +63,57 @@ let index_img = 0;
 // creazione di un set interval per il passaggio automatico con un il range di 5s
 let intervallo;
 
+// una variabile per il reverse del cambiamento automatico delle slide
 let boolReverseInterval = false;
 
+// al click del pulsante reverse_AutoPlay
 DOM_Button_reverse_AutoPlay.addEventListener('click', () => {
+
+    // Aggiungiamo/Togliamo la classe active al button
     DOM_Button_reverse_AutoPlay.classList.toggle('active');
 
+    // SE la variabile e FALSE
     if (!boolReverseInterval) {
+        // la variabile diventa TRUE
         boolReverseInterval = true;
+        // assegnamo al button una stringa in base al stato della variabile boolReverseInterval
         DOM_Button_reverse_AutoPlay.innerHTML = 'AutoPlay verso SINISTRA';
     }
+    // ALTRIMENTI:
     else {
+        // la variabile diventa FALSE
         boolReverseInterval = false;
+        // assegnamo al button una stringa in base al stato della variabile boolReverseInterval
         DOM_Button_reverse_AutoPlay.innerHTML = 'AutoPlay verso DESTRA';
     }
 })
 
+// funzione per l'intervallo di autoPLay
 function setInterval_My_Script() {
+    // SE la variabile e TRUE
     if (boolReverseInterval)
+        // alla variabile intervallo asseganmo il setInterval che chiama la funzione indietroDelleImg
         intervallo = setInterval(indietroDelleImg, 3000);
+
+    // ALTRIMENTI:
     else
+        // alla variabile intervallo asseganmo il setInterval che chiama la funzione indietroDelleImg
         intervallo = setInterval(avvanzamentoDelleImg, 3000);
 
 }
 
+// chiamiamo la funzione
 setInterval_My_Script();
 
+// al entrata del mouse
 DOM_carousel_slider.addEventListener('mouseenter', () => {
+    // pulisci l'intervallo del autoPlay
     clearInterval(intervallo);
 });
 
+// al abbandono del mouse
 DOM_carousel_slider.addEventListener('mouseleave', () => {
+    // chiamiamo la funzione
     setInterval_My_Script();
 });
 
