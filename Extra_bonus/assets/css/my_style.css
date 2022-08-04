@@ -19,7 +19,7 @@
 
 #buttons_down_select_img .selector_img.active_img {
     filter:brightness(1);
-    border: 5px solid #bac3d0;
+    border: 3px solid #bac3d0;
 }
 
 .img_cover {
@@ -28,4 +28,23 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+}
+
+.reverse_autoPlay {
+    position: absolute;
+    top: 135%;
+    left: 50%;
+    min-width: 300px;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+    background-color: #4fc7ec;
+    border: 3px solid #bac3d0;
+    cursor: pointer;
+}
+
+.reverse_autoPlay.active {
+    background-color: #f88659;
 }

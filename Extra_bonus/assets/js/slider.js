@@ -44,6 +44,7 @@ const DOM = document.querySelector.bind(document);
 const DOM_UL_FATHER = DOM('.slides-wrapper');
 const DOM_BUTTON_PREV = DOM('.arrow-prev');
 const DOM_BUTTON_NEXT = DOM('.arrow-next');
+const DOM_Button_reverse_AutoPlay = DOM('.reverse_autoPlay');
 
 const DOM_carousel_slider = DOM('.slider');
 const DOM_BUTTONS_SELECT_IMG = document.querySelector('#buttons_down_select_img');
@@ -61,8 +62,27 @@ let index_img = 0;
 // creazione di un set interval per il passaggio automatico con un il range di 5s
 let intervallo;
 
+let boolReverseInterval = false;
+
+DOM_Button_reverse_AutoPlay.addEventListener('click', () => {
+    DOM_Button_reverse_AutoPlay.classList.toggle('active');
+
+    if (!boolReverseInterval) {
+        boolReverseInterval = true;
+        DOM_Button_reverse_AutoPlay.innerHTML = 'AutoPlay verso SINISTRA';
+    }
+    else {
+        boolReverseInterval = false;
+        DOM_Button_reverse_AutoPlay.innerHTML = 'AutoPlay verso DESTRA';
+    }
+})
+
 function setInterval_My_Script() {
-    intervallo = setInterval(avvanzamentoDelleImg, 3000);
+    if (boolReverseInterval)
+        intervallo = setInterval(indietroDelleImg, 3000);
+    else
+        intervallo = setInterval(avvanzamentoDelleImg, 3000);
+
 }
 
 setInterval_My_Script();
@@ -74,6 +94,7 @@ DOM_carousel_slider.addEventListener('mouseenter', () => {
 DOM_carousel_slider.addEventListener('mouseleave', () => {
     setInterval_My_Script();
 });
+
 
 // un for per la creazione del layout
 for (let i = 0; i < slides.length; i++) {
@@ -150,7 +171,9 @@ for (let i = 0; i < DOM_BUTTONS_ELEMENTS_CREATED.length; i++) {
 
 
 // al click del pulsante precedente
-DOM_BUTTON_PREV.addEventListener('click', () => {
+DOM_BUTTON_PREV.addEventListener('click', indietroDelleImg);
+
+function indietroDelleImg() {
 
     // se index_img e maggiore del valore 0
     if (index_img > 0) {
@@ -178,7 +201,7 @@ DOM_BUTTON_PREV.addEventListener('click', () => {
         // assegnamo al index_img il numero finale
         index_img = DOM_LI_ELEMENTS_CREATED.length - 1;
     }
-});
+}
 
 
 // al click del pulsante prossegui
